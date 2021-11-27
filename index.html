@@ -234,6 +234,14 @@
         html {
   scroll-behavior: smooth;
 }
+.submit-alert {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    width: 400px;
+    display: none;
+    
+}
     </style>
 
 </head>
@@ -327,7 +335,7 @@
                             <label for="arrivaldate" class="form-label">Дата Отъезда</label>
                             <input type="text" class="form-control" id="departuredate">
                         </div>
-                        <button type="submit" class="btn btn-primary">Отправить</button>
+                        <button type="submit" class="btn btn-primary submit-btn">Отправить</button>
                     </form>
                     <div class="price">
                         <h1 class="prices">Цены</h1>
@@ -351,6 +359,10 @@
                 <h4>© 2005—2021 Екатеринбург</h4>
             </footer>
         </div>
+        <div class="alert alert-success alert-dismissable submit-alert">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Заявка успешно отправлена!
+        </div>
     </div>
 </body>
 <script>
@@ -358,5 +370,14 @@
         $("#arrivaldate").datepicker();
         $("#departuredate").datepicker();
     });
+    $(document).ready(function(){
+    $('.submit-btn').click(function(a){
+        a.preventDefault();
+        $('.alert').show(250);
+        setTimeout(() => {
+            $('.alert').hide(250);
+        }, 4000)
+    }) 
+});
     </script>
 </html>
